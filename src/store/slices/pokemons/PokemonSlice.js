@@ -17,13 +17,11 @@ export const pokemonSlice = createSlice({
             state.page = action.payload.page;
             state.pokemons = action.payload.pokemons;
         },
-        setPokemonsData: (state,action) =>{
-            state.isLoading=false;
-            state.pokemonsData = action.payload.pokemonsData;
-            
-        }
-    }
-});
+       setPokemonsData:(state,action)=>{
+        state.isLoading = false,
+        state.pokemonsData =action.payload.pokemonsData
+       },
+}});
 
 
 // Action creators are generated for each case reducer function
