@@ -1,24 +1,33 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { pdata } from '../api/ApiPokemon'
+import { getDataPokemon } from '../store/slices/pokemons'
+import { useDispatch, useSelector } from 'react-redux';
+
 const Pokemon = () => {
     const { name } = useParams()
-    const [data, setData] = useState([])
+
+    const dispatch = useDispatch();
+    const { pokeData = [], isLoading = true } = useSelector(state => state.pokemon);
 
     useEffect(() => {
-        const probando = async () => {
-            const info = await pdata(name)
-            setData(info.data)
-        }
-        probando()
+        dispatch(getDataPokemon(name))
     }, [name]);
-    const { back_default } = data.sprites
-    console.log(back_default)
+
+    console.log(pokeData)
+    const { abilities, sprites, types } = pokeData
     return (
-        <div>
-            <h1>{name}</h1>
-            <img src={back_default} alt="" />
-        </div>
+        <>
+            {isLoading ?
+                <>
+                    <h1>cargando</h1>
+                </>
+                : <>
+                    <h1>{name}</h1>
+                    <img src={sprites.front_default} alt={name} />
+                    <img src={sprites.back_default} alt={name} />
+                </>}
+
+        </>
     )
 }
 

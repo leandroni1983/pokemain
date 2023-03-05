@@ -26,8 +26,8 @@ function PokeCardV2({ pokemon }) {
                 backgroundColor: 'secondary.main'
             }}
         >
-            <Grid container spacing={2}>
-                <Grid item>
+            <Grid container spacing={2} >
+                <Grid item >
                     <ButtonBase sx={{ width: 128, height: 128 }}>
                         <Img alt={pokemon.species.name} src={pokemon.sprites.other.home.front_default} />
                     </ButtonBase>

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+
 import { getPokemons, getDataPokemons } from '../store/slices/pokemons';
-import { Button, Divider, Grid } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import PokeCardV2 from '../components/PokeCardV2';
 
 const PokemonPage = () => {
@@ -30,7 +30,7 @@ const PokemonPage = () => {
                 {isLoad
                     ? <h1>cargando</h1>
                     : pokemonsData.map(poke =>
-                        <PokeCardV2 pokemon={poke} />
+                        <PokeCardV2 pokemon={poke} key={poke.name} />
                     )}
             </Grid>
 

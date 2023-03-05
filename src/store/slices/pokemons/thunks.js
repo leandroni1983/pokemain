@@ -1,6 +1,6 @@
 import { pokemonApi,pokemonData } from '../../../api/ApiPokemon';
 import { setPokemons,  startLoadingPokemons, setPokemonsData} from './pokemonSlice';
-
+import { setPokemon, startLoadingPokemon } from './PokeSlice';
 export const getPokemons = ( page = 0 ) => {
     return async( dispatch, getState ) => {
         dispatch( startLoadingPokemons() );
@@ -19,5 +19,14 @@ export const getDataPokemons = (pokemons) =>{
         const data = responses.map(({ data }) => data);
         
         dispatch(setPokemonsData({pokemonsData:data}))
+    }
+}
+
+
+export const getDataPokemon = (name) =>{
+    return async(dispatch,getState) =>{
+        dispatch(startLoadingPokemon());
+        const response = await pokemonData(name)
+        dispatch(setPokemon({pokeData:response.data}))
     }
 }

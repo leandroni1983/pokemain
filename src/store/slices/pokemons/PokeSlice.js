@@ -3,11 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 export const pokeSlice = createSlice({
             name: 'poke',
             initialState: {
-            pokeData: []
+                pokeData: [],
+                isLoading:false,
         },
 
         reducers: {
-            startLoadingPokemons: (state, /* action */ ) => {
+            startLoadingPokemon: (state, /* action */ ) => {
                 state.isLoading = true;
             },
             setPokemon: ( state, action ) => {
@@ -16,4 +17,4 @@ export const pokeSlice = createSlice({
             },
         }
 });
-export const { startLoadingPokemons,setPokemon } = pokeSlice.actions;
+export const { startLoadingPokemon,setPokemon } = pokeSlice.actions;
