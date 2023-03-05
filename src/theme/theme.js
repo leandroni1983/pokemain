@@ -3,7 +3,7 @@ import '../index.css'
 const theme = createTheme({
     palette:{
         primary:{
-            main: '#191825'
+            main: '#191845'
         },
         secondary:{
             main:'#865DFF'
@@ -16,7 +16,6 @@ const theme = createTheme({
         }
     },
     typography: {
-       
         fontFamily:'Nunito,sans-serif',
     },
   });

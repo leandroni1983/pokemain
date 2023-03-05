@@ -2,12 +2,12 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
 import { Button } from '@mui/material';
-
 import { StyledTypography } from './styled';
-
+import { Typography } from '@mui/material'
+import { Link as RouterLink } from "react-router-dom";
+import { Link } from '@mui/material';
 const Img = styled('img')({
     margin: 'auto',
     display: 'block',
@@ -33,39 +33,40 @@ function PokeCardV2({ pokemon }) {
                     </ButtonBase>
                 </Grid>
                 <Grid item xs={12} sm container>
-                    <Grid item xs container direction="column" spacing={2}>
-                        <Grid item xs>
-                            <StyledTypography gutterBottom variant="subtitle1" component="div">
-                                Nombre: {pokemon.species.name}
+                    <Grid item xs container direction={"column"} spacing={2}>
+                        <Grid item >
+                            <StyledTypography  >
+                                Name:  <b>{pokemon.species.name} </b>
                             </StyledTypography>
-                            <StyledTypography variant="body2" gutterBottom>
-                                {pokemon.abilities.map(({ ability }) => <p>{ability.name}</p>)}
-                            </StyledTypography>
-                            <StyledTypography variant="body2">
-                                ID: {pokemon.id}
+                            <StyledTypography
+                            >
+                                Tipo:
+                                {pokemon.types.map(({ type }) => <span key={type.name}> {type.name}</span>)}
                             </StyledTypography>
                         </Grid>
 
                     </Grid>
-                    <Grid item justifyContent={'space-between'} width={"40%"}
-                        display={'flex'}
+                    <Grid container justifyContent={'space-between'}
+                        width={"40%"}
                         direction={'column'}>
-                        <StyledTypography
-                            variant="subtitle1"
-                            display={'flex'}
-                            justifyContent={'flex-end'}>
-                            {pokemon.types.map(({ type }) => <> {type.name}</>)}
+                        <StyledTypography>
+                            <b>     ID: {pokemon.id}  </b>
                         </StyledTypography>
-                        <Button
-                            color='tercero'
-                            variant='contained'
-                            sx={{ cursor: 'pointer' }}>
-                            More Info
-                        </Button>
+
+                        <Link component={RouterLink} to={`/pokemons/${pokemon.name}`} color='inherit' underline="none">
+                            <Button
+                                color='tercero'
+                                variant='contained'
+                                sx={{ cursor: 'pointer' }}>
+                                <Typography>More Info</Typography>
+                            </Button>
+
+                        </Link>
+
                     </Grid>
                 </Grid>
             </Grid>
-        </Paper>
+        </Paper >
     );
 }
 

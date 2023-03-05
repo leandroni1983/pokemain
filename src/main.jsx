@@ -11,8 +11,10 @@ import CounterPage from './pages/CounterPage';
 import ErrorPage from './pages/ErrorPage';
 import HomePage from './pages/HomePage';
 import PokemonPage from './pages/PokemonPage';
+
 import { Provider } from 'react-redux';
 import { store } from './store/store';
+import Pokemon from './pages/Pokemon';
 
 
 const router = createBrowserRouter([
@@ -22,7 +24,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/Home",
+        path: "/",
         element: <HomePage />,
       },
       {
@@ -36,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/pokemons",
         element: <PokemonPage />,
+      },
+      {
+        path: "/pokemons/:name",
+        element: <Pokemon />,
       },
     ]
   },

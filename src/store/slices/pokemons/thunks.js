@@ -1,5 +1,4 @@
-import axios from 'axios';
-import { pokemonApi, } from '../../../api/ApiPokemon';
+import { pokemonApi,pokemonData } from '../../../api/ApiPokemon';
 import { setPokemons,  startLoadingPokemons, setPokemonsData} from './pokemonSlice';
 
 export const getPokemons = ( page = 0 ) => {
@@ -12,14 +11,13 @@ export const getPokemons = ( page = 0 ) => {
 }
 
 export const getDataPokemons = (pokemons) =>{
-    let arr = []
     return async(dispatch,getState )=>{
         dispatch(startLoadingPokemons());
         const responses = await Promise.all(
-            pokemons.map(({ url }) => axios.get(url))
+            pokemons.map(({ name }) => pokemonData(name))
         );
-        responses.map(({ data }) => arr.push(data));
+        const data = responses.map(({ data }) => data);
         
-        dispatch(setPokemonsData({pokemonsData:arr}))
+        dispatch(setPokemonsData({pokemonsData:data}))
     }
 }
