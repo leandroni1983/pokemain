@@ -8,6 +8,9 @@ import { StyledTypography } from './styled';
 import { Typography } from '@mui/material'
 import { Link as RouterLink } from "react-router-dom";
 import { Link } from '@mui/material';
+import { getDataPokemon } from '../store/slices/pokemons';
+
+
 const Img = styled('img')({
     margin: 'auto',
     display: 'block',
@@ -57,6 +60,7 @@ function PokeCardV2({ pokemon }) {
                             <Button
                                 color='tercero'
                                 variant='contained'
+                                onClick={() => dispatch(getDataPokemon(pokemon.name))}
                                 sx={{ cursor: 'pointer' }}>
                                 <Typography>More Info</Typography>
                             </Button>
